@@ -301,6 +301,11 @@ struct Video : Identifiable {
 }
 
 struct PlayerScrollView : UIViewRepresentable {
+    func makeCoordinator() -> PlayerScrollView.Coordinator {
+        
+        return PlayerScrollView.Coordinator(parent1: self)
+    }
+    
     
     @Binding var data : [Video]
     
@@ -324,6 +329,7 @@ struct PlayerScrollView : UIViewRepresentable {
         // This is to ignore any safe area...
         view.contentInsetAdjustmentBehavior = .never
         view.isPagingEnabled = true
+        view.delegate = context.coordinator
         
         return view
     }
@@ -344,6 +350,7 @@ struct PlayerScrollView : UIViewRepresentable {
     class Coordinator : NSObject,UIScrollViewDelegate{
         
         var parent : PlayerScrollView
+        var index = 0
         
         init(parent1 : PlayerScrollView) {
             
@@ -352,10 +359,23 @@ struct PlayerScrollView : UIViewRepresentable {
         
         func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
             
-            let index = Int(scrollView.contentOffset.y / UIScreen.main.bounds.height)
+            let currentindex = Int(scrollView.contentOffset.y / UIScreen.main.bounds.height)
             
-            print(index)
+            if index != currentindex{
+                
+                index = currentindex
+                
+                for i in 0..<parent.data.count{
+                    
+                    parent.data[i].player.seek(to: .zero)
+                    parent.data[i].player.pause()
+                }
+                
+                // This area plays the next video...
+                
+                parent.data[index].player.play()
+                
+            }
         }
     }
-    
 }
