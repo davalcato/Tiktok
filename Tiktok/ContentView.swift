@@ -250,7 +250,14 @@ struct PlayerView : View {
                 Player(player: i.player)
                     // Added full screen size here because pagination will be added...
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                
+                    .offset(y: -5)
             }
+        }
+        .onAppear {
+            // This plays the video
+            self.data[0].player.play()
+            
         }
     }
 }
@@ -323,7 +330,32 @@ struct PlayerScrollView : UIViewRepresentable {
     
     func updateUIView(_ uiView: UIScrollView, context: Context) {
         
+        // Here is where we dynamically update the height based on data...
         
+        uiView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * CGFloat((data.count)))
+        
+        for i in 0..<uiView.subviews.count{
+            
+            uiView.subviews[i].frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * CGFloat((data.count)))
+        }
+        
+    }
+    
+    class Coordinator : NSObject,UIScrollViewDelegate{
+        
+        var parent : PlayerScrollView
+        
+        init(parent1 : PlayerScrollView) {
+            
+            parent = parent1
+        }
+        
+        func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+            
+            let index = Int(scrollView.contentOffset.y / UIScreen.main.bounds.height)
+            
+            print(index)
+        }
     }
     
 }
