@@ -33,6 +33,76 @@ struct Home : View {
                 
                 Spacer()
                 
+                HStack{
+                    
+                    Spacer()
+                    
+                    VStack(spacing: 35){
+                        
+                        Button(action: {
+                            
+                        }) {
+                            
+                            Image("pic")
+                            .renderingMode(.original)
+                            .resizable()
+                            .frame(width: 55, height: 55)
+                            .clipShape(Circle())
+                        }
+                        
+                        Button(action: {
+                            
+                            
+                        }) {
+                            
+                            VStack(spacing: 8){
+                                
+                                Image(systemName: "suit.heart.fill")
+                                .font(.title)
+                                .foregroundColor(.white)
+                                
+                                Text("44K")
+                                .foregroundColor(.white)
+                            }
+                        }
+                        
+                        Button(action: {
+                            
+                            
+                        }) {
+                            
+                            VStack(spacing: 8){
+                                
+                                Image(systemName: "message.fill")
+                                .font(.title)
+                                .foregroundColor(.white)
+                                
+                                Text("1201")
+                                .foregroundColor(.white)
+                            }
+                        }
+                        
+                        Button(action: {
+                            
+                            
+                        }) {
+                            
+                            VStack(spacing: 8){
+                                
+                                Image(systemName: "arrowshape.turn.up.right.fill")
+                                .font(.title)
+                                .foregroundColor(.white)
+                                
+                                Text("Share")
+                                .foregroundColor(.white)
+                            }
+                        }
+                    }
+                    .padding(.bottom, 55)
+                    .padding(.trailing)
+                    
+                }
+                
                 HStack(spacing: 0){
                     
                     Button(action: {
