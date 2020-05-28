@@ -41,6 +41,8 @@ struct Home : View {
         
         ZStack{
             
+            PlayerScrollView(data: self.$data)
+            
             VStack{
                 
                 HStack(spacing: 15){
@@ -224,8 +226,13 @@ struct Home : View {
                 }
                 .padding(.horizontal)
             }
+                
+                // All edges are ignored here...
+            .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
+                .padding(.bottom, (UIApplication.shared.windows.first?.safeAreaInsets.bottom)! + 5)
         }
         .background(Color.black.edgesIgnoringSafeArea(.all))
+        .edgesIgnoringSafeArea(.all)
         
     }
 }
@@ -241,7 +248,7 @@ struct PlayerView : View {
             ForEach(self.data){i in
                 
                 Player(player: i.player)
-                    // Added full screen size here because pagination will be added... 
+                    // Added full screen size here because pagination will be added...
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
             }
         }
@@ -286,4 +293,37 @@ struct Video : Identifiable {
     var replay : Bool
 }
 
-
+struct PlayerScrollView : UIViewRepresentable {
+    
+    @Binding var data : [Video]
+    
+    func makeUIView(context: Context) -> UIScrollView {
+        
+        let view = UIScrollView()
+        
+        let childView = UIHostingController(rootView: PlayerView(data: self.$data))
+        
+        
+        // Each of the childViews covers a full screen
+        childView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * CGFloat((data.count)))
+        
+        // The same applies to these childViews...
+        view.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * CGFloat((data.count)))
+        
+        view.addSubview(childView.view)
+        view.showsVerticalScrollIndicator = false
+        view.showsHorizontalScrollIndicator = false
+        
+        // This is to ignore any safe area...
+        view.contentInsetAdjustmentBehavior = .never
+        view.isPagingEnabled = true
+        
+        return view
+    }
+    
+    func updateUIView(_ uiView: UIScrollView, context: Context) {
+        
+        
+    }
+    
+}
