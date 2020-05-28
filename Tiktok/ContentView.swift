@@ -26,6 +26,16 @@ struct Home : View {
     
     @State var index = 0
     @State var top = 0
+    @State var data = [
+    
+            Video(id: 0, player: AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "video4", ofType: "mp4")!)), replay: false),
+            Video(id: 1, player: AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "video5", ofType: "mp4")!)), replay: false),
+            Video(id: 2, player: AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "video2", ofType: "mov")!)), replay: false),
+            Video(id: 3, player: AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "video3", ofType: "mp4")!)), replay: false),
+            Video(id: 4, player: AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "video1", ofType: "mov")!)), replay: false),
+            Video(id: 5, player: AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "video6", ofType: "mp4")!)), replay: false),
+        
+    ]
     
     var body: some View{
         
@@ -220,6 +230,44 @@ struct Home : View {
     }
 }
 
+struct PlayerView : View {
+    
+    @Binding var data : [Video]
+    
+    var body: some View{
+        
+        VStack(spacing: 0){
+            
+            ForEach(self.data){i in
+                
+                Player(player: i.player)
+                    // Added full screen size here because pagination will be added... 
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            }
+        }
+    }
+}
+
+struct Player : UIViewControllerRepresentable {
+    
+    var player : AVPlayer
+    
+    func makeUIViewController(context: Context) -> AVPlayerViewController {
+        
+        let view = AVPlayerViewController()
+        view.player = player
+        view.showsPlaybackControls = false
+        view.videoGravity = .resizeAspectFill
+        return view
+        
+    }
+    
+    func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) {
+        
+        
+    }
+}
+
 class Host: UIHostingController<ContentView> {
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
@@ -238,13 +286,4 @@ struct Video : Identifiable {
     var replay : Bool
 }
 
-var data = [
-    
-    Video(id: 0, player: AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "video4", ofType: "mp4")!)), replay: false),
-    Video(id: 1, player: AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "video5", ofType: "mp4")!)), replay: false),
-    Video(id: 2, player: AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "video2", ofType: "mov")!)), replay: false),
-    Video(id: 3, player: AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "video3", ofType: "mp4")!)), replay: false),
-    Video(id: 4, player: AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "video1", ofType: "mov")!)), replay: false),
-    Video(id: 5, player: AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "video6", ofType: "mp4")!)), replay: false),
-    
-]
+
