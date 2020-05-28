@@ -19,3 +19,35 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+struct Home : View {
+    
+    @State var index = 0
+    
+    var body: some View{
+        
+        ZStack{
+            
+            VStack{
+                
+                Spacer()
+                
+                HStack{
+                    
+                    Button(action: {
+                        
+                        
+                    }) {
+                        
+                        Image("home")
+                        .resizable()
+                        .frame(width: 25, height: 25)
+                        .foregroundColor(self.index == 0 ? .white : Color.white.opacity(0.35))
+                        
+                    }
+                    
+                }
+            }
+        }
+    }
+}
