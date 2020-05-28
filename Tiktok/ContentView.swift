@@ -24,12 +24,42 @@ struct ContentView_Previews: PreviewProvider {
 struct Home : View {
     
     @State var index = 0
+    @State var top = 0
     
     var body: some View{
         
         ZStack{
             
             VStack{
+                
+                HStack(spacing: 15){
+                    
+                    Button(action: {
+                        
+                        self.top = 0
+                        
+                    }) {
+                        
+                        Text("Following")
+                            .foregroundColor(self.top == 0 ? .white : Color.white.opacity(0.45))
+                            .fontWeight(self.top == 0 ? .bold : .none)
+                            .padding(.vertical)
+                        
+                    }
+                    
+                    Button(action: {
+                        
+                        self.top = 1
+                        
+                    }) {
+                        
+                        Text("For You")
+                            .foregroundColor(self.top == 0 ? .white : Color.white.opacity(0.45))
+                            .fontWeight(self.top == 1 ? .bold : .none)
+                            .padding(.vertical)
+                    }
+                    
+                }
                 
                 Spacer()
                 
@@ -187,4 +217,13 @@ struct Home : View {
         .background(Color.black.edgesIgnoringSafeArea(.all))
         
     }
+}
+
+class Host: UIHostingController<ContentView> {
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        
+        return .lightContent
+    }
+    
 }
