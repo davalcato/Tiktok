@@ -245,13 +245,33 @@ struct PlayerView : View {
         
         VStack(spacing: 0){
             
-            ForEach(self.data){i in
+            ForEach(0..<self.data.count){i in
                 
-                Player(player: i.player)
+                ZStack{
+                    
+                    Player(player: self.data[i].player)
                     // Added full screen size here because pagination will be added...
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                
                     .offset(y: -5)
+                    
+                    if self.data[i].replay{
+                        
+                        Button(action: {
+                            
+                            // Here we play the video again...
+                            self.data[i].replay = false
+                            self.data[i].player.seek(to: .zero)
+                            self.data[i].player.play()
+                            
+                        }) {
+                            
+                            Image(systemName: "goforward")
+                            .resizable()
+                            .frame(width: 55, height: 60)
+                            .foregroundColor(.white)
+                        }
+                    }
+                }
             }
         }
         .onAppear {
