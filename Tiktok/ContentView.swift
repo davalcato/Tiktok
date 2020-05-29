@@ -255,8 +255,21 @@ struct PlayerView : View {
             }
         }
         .onAppear {
+            
             // This plays the video
             self.data[0].player.play()
+            
+            self.data[0].player.actionAtItemEnd = .none
+            
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.data[0].player.currentItem, queue: .main) { (_) in
+                
+                // Here is where notification will identify the end of each video...
+                
+                
+                // Here we enable the replay button...
+                self.data[0].replay = true
+                
+            }
             
         }
     }
@@ -375,7 +388,21 @@ struct PlayerScrollView : UIViewRepresentable {
                 
                 parent.data[index].player.play()
                 
+                parent.data[index].player.actionAtItemEnd = .none
+                
+                NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: parent.data[index].player.currentItem, queue: .main) { (_) in
+                    
+                    // Here is where notification will identify the end of each video...
+                    
+                    
+                    // Here we enable the replay button...
+                    self.parent.data[self.index].replay = true
+                    
+                }
             }
         }
     }
 }
+
+
+//
