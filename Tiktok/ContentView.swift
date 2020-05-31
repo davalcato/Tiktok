@@ -154,11 +154,17 @@ struct Home : View {
                         
                     }) {
                         
+                        VStack(spacing: 8){
+                        
                         Image("home")
                         .resizable()
                         .frame(width: 25, height: 25)
                         .foregroundColor(self.index == 0 ? .white : Color.white.opacity(0.35))
                         .padding(.horizontal)
+                            
+                            Text("Home")
+                            .foregroundColor(.white)
+                        }
                         
                     }
                     
@@ -170,12 +176,18 @@ struct Home : View {
                         
                     }) {
                         
+                        VStack(spacing: 8){
+                        
                         Image("search")
                         .resizable()
                         .frame(width: 25, height: 25)
                         .foregroundColor(self.index == 1 ? .white : Color.white.opacity(0.35))
                         .padding(.horizontal)
-                        
+                            
+                         Text("Search")
+                        .foregroundColor(.white)
+                            
+                        }
                     }
                     
                     Spacer(minLength: 0)
@@ -200,11 +212,18 @@ struct Home : View {
                         
                     }) {
                         
+                        VStack(spacing: 8){
+                            
                         Image("comment")
                         .resizable()
                         .frame(width: 25, height: 25)
                         .foregroundColor(self.index == 2 ? .white : Color.white.opacity(0.35))
                         .padding(.horizontal)
+                            
+                        Text("Inbox")
+                        .foregroundColor(.white)
+                            
+                        }
                         
                     }
                     
@@ -216,12 +235,17 @@ struct Home : View {
                         
                     }) {
                         
+                        VStack(spacing: 8){
+                        
                         Image("profile")
                         .resizable()
                         .frame(width: 25, height: 25)
                         .foregroundColor(self.index == 3 ? .white : Color.white.opacity(0.35))
                         .padding(.horizontal)
-                        
+                            
+                        Text("Me")
+                        .foregroundColor(.white)
+                        }
                     }
                 }
                 .padding(.horizontal)
@@ -325,7 +349,6 @@ class Host: UIHostingController<ContentView> {
 }
 
 // This is the video area...
-
 struct Video : Identifiable {
     
     var id : Int
