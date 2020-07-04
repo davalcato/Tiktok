@@ -12,10 +12,10 @@ import AVKit
 struct ContentView: View {
     var body: some View {
         
-        NavigationView {
+//        NavigationView {
         
         Home()
-        }
+//        }
     }
 }
 
@@ -183,7 +183,7 @@ struct Home : View {
                         
                         VStack(spacing: 8){
                             
-                            NavigationLink(destination: SearchView(), isActive: $isAction) {
+//                            NavigationLink(destination: SearchView(), isActive: $isAction) {
                         
                         Image("search")
                         .resizable()
@@ -194,7 +194,7 @@ struct Home : View {
                          Text("Search")
                         .foregroundColor(.white)
                                 
-                            }
+//                            }
                         }
                     }
                     
