@@ -22,7 +22,8 @@
 		75542E3E24804FD100C03B90 /* video1.mov in Resources */ = {isa = PBXBuildFile; fileRef = 75542E3824804FD100C03B90 /* video1.mov */; };
 		75542E3F24804FD100C03B90 /* video6.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 75542E3924804FD100C03B90 /* video6.mp4 */; };
 		75542E4024804FD100C03B90 /* video3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 75542E3A24804FD100C03B90 /* video3.mp4 */; };
-		758370BD2482F8B5002B00FC /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758370BC2482F8B5002B00FC /* SearchView.swift */; };
+		757CB0BD248C50A8005C77BA /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757CB0BC248C50A8005C77BA /* SearchView.swift */; };
+		759E1C2D248DBE4D00971484 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759E1C2C248DBE4D00971484 /* SearchBar.swift */; };
 		98D3CA5114701699AD4947BB /* Pods_TiktokTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3190AF861409ABBF3FC69E /* Pods_TiktokTests.framework */; };
 		AF4EEA29048095834A547828 /* Pods_Tiktok_TiktokUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA507CF9D694B5293A5AF31 /* Pods_Tiktok_TiktokUITests.framework */; };
 /* End PBXBuildFile section */
@@ -69,7 +70,8 @@
 		75542E3824804FD100C03B90 /* video1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = video1.mov; sourceTree = "<group>"; };
 		75542E3924804FD100C03B90 /* video6.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video6.mp4; sourceTree = "<group>"; };
 		75542E3A24804FD100C03B90 /* video3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video3.mp4; sourceTree = "<group>"; };
-		758370BC2482F8B5002B00FC /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		757CB0BC248C50A8005C77BA /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		759E1C2C248DBE4D00971484 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		7C3A9A4AC76E2F5C24C8CFF7 /* Pods_Tiktok.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiktok.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C353D9B5DC227558EF0BFA0 /* Pods-TiktokTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TiktokTests.debug.xcconfig"; path = "Target Support Files/Pods-TiktokTests/Pods-TiktokTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA3A4DD21363FC7883F0848D /* Pods-Tiktok.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiktok.release.xcconfig"; path = "Target Support Files/Pods-Tiktok/Pods-Tiktok.release.xcconfig"; sourceTree = "<group>"; };
@@ -134,8 +136,9 @@
 				75542DF9248044E000C03B90 /* AppDelegate.swift */,
 				75542DFB248044E000C03B90 /* SceneDelegate.swift */,
 				75542DFD248044E000C03B90 /* ContentView.swift */,
+				757CB0BC248C50A8005C77BA /* SearchView.swift */,
+				759E1C2C248DBE4D00971484 /* SearchBar.swift */,
 				75542DFF248044E600C03B90 /* Assets.xcassets */,
-				758370BC2482F8B5002B00FC /* SearchView.swift */,
 				75542E04248044E600C03B90 /* LaunchScreen.storyboard */,
 				75542E07248044E600C03B90 /* Info.plist */,
 				75542E01248044E600C03B90 /* Preview Content */,
@@ -450,8 +453,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				758370BD2482F8B5002B00FC /* SearchView.swift in Sources */,
+				757CB0BD248C50A8005C77BA /* SearchView.swift in Sources */,
 				75542DFA248044E000C03B90 /* AppDelegate.swift in Sources */,
+				759E1C2D248DBE4D00971484 /* SearchBar.swift in Sources */,
 				75542DFC248044E000C03B90 /* SceneDelegate.swift in Sources */,
 				75542DFE248044E000C03B90 /* ContentView.swift in Sources */,
 			);

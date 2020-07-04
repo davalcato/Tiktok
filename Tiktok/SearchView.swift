@@ -2,7 +2,7 @@
 //  SearchView.swift
 //  Tiktok
 //
-//  Created by Daval Cato on 5/30/20.
+//  Created by Daval Cato on 6/6/20.
 //  Copyright © 2020 Daval Cato. All rights reserved.
 //
 
@@ -19,3 +19,6 @@ struct SearchView_Previews: PreviewProvider {
         SearchView()
     }
 }
+
+
+
